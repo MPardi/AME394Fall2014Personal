@@ -20,6 +20,8 @@
   by Colby Newman
 */
 
+
+//A comment by Michael.
 const int LED_CHOICE = 2;
 
 long interval;
