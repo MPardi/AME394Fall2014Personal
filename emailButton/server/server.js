@@ -27,7 +27,7 @@ var mailOptions = {
     subject: "Hello ✔", // Subject line
     text: "Shitted pants, Hello world ✔", // plaintext body
     html: "<b>Hello world ✔</b>" // html body
-}
+};
 
 transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
