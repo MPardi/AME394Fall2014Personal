@@ -20,7 +20,7 @@ nodemailer.createTestAccount((err, account) => {
         port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
-            user: "michaelthomaspardi@gmail.com", // generated ethereal user
+            user: "SuccessPastaTime@gmail.com", // generated ethereal user
             pass: "Snow7w17"  // generated ethereal password
         }
     });
