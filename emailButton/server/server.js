@@ -7,25 +7,6 @@ var methodOverride = require('method-override');
 var hostname = process.env.HOSTNAME || 'localhost';
 var port = 8080;
 
-app.get("/", function (req, res) {
-    console.log("GET req arrived")
-
-    // send mail with defined transport object
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            return console.log(error);
-        }
-        console.log('Message sent: %s', info.messageId);
-        // Preview only available when sending through an Ethereal account
-        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-
-        // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@blurdybloop.com>
-        // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
-    });
-
-    res.send("hello world")
-});
-
 nodemailer.createTestAccount((err, account) => {
 
     // create reusable transporter object using the default SMTP transport
@@ -42,11 +23,31 @@ nodemailer.createTestAccount((err, account) => {
     // setup email data with unicode symbols
     let mailOptions = {
         from: '"MichaelThomasPardi <MichaelThomasPardi@gmail.com>', // sender address
-        to: 'michaelthomaspardi@gmail.com', // list of receivers
+        to: 'michaelthomaspardi@gmail.com, mpardi@asu.edu', // list of receivers
         subject: 'Hello ✔', // Subject line
         text: 'Hello world?', // plain text body
         html: '<b>Hello world?</b>' // html body
     };
+
+    app.get("/", function (req, res) {
+        console.log("GET req arrived")
+
+        // send mail with defined transport object
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                return console.log(error);
+            }
+            console.log('Message sent: %s', info.messageId);
+            // Preview only available when sending through an Ethereal account
+            console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+
+            // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@blurdybloop.com>
+            // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+        });
+
+        res.send("hello world")
+    });
+
 });
 
 app.use(methodOverride());
