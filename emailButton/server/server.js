@@ -1,3 +1,5 @@
+const nodemailer = require('nodemailer');
+
 var express = require("express");
 var app = express();
 var bodyParser = require('body-parser');
@@ -11,14 +13,32 @@ app.get("/", function (req, res) {
     res.send("hello world")
 });
 
-var mail = require("nodemailer").mail;
+// create reusable transport method (opens pool of SMTP connections)
+var smtpTransport = nodemailer.createTransport("SMTP", {
+    service: "Gmail",
+    auth: {
+        user: "successpastatime@gmail.com",
+        pass: "Snow7w17"
+    }
+});
 
-mail({
-    from: "Fred Foo ✔ <foo@blurdybloop.com>", // sender address
-    to: "bar@blurdybloop.com, baz@blurdybloop.com", // list of receivers
+var mailOptions = {
+    from: "Michael Pardi ✔ <successpastatime@gmail.com", // sender address
+    to: "michaelthomaspardi@gmail.com", // list of receivers
     subject: "Hello ✔", // Subject line
-    text: "Hello world ✔", // plaintext body
+    text: "Shitted pants, Hello world ✔", // plaintext body
     html: "<b>Hello world ✔</b>" // html body
+}
+
+smtpTransport.sendMail(mailOptions, function(error, response){
+    if(error){
+        console.log(error);
+    }else{
+        console.log("Message sent: " + response.message);
+    }
+
+    // if you don't want to use this transport object anymore, uncomment following line
+    //smtpTransport.close(); // shut down the connection pool, no more messages
 });
 
 app.use(methodOverride());
