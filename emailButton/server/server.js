@@ -12,24 +12,30 @@ app.get("/", function (req, res) {
     res.send("hello world")
 });
 
-// create reusable transport method (opens pool of SMTP connections)
-var smtpTransport = nodemailer.createTransport("SMTP", {
-    service: "Gmail",
-    auth: {
-        user: "successpastatime@gmail.com",
-        pass: "Snow7w17"
-    }
-});
+nodemailer.createTestAccount((err, account) => {
 
-var mailOptions = {
-    from: "Michael Pardi ✔ <successpastatime@gmail.com", // sender address
-    to: "michaelthomaspardi@gmail.com", // list of receivers
-    subject: "Hello ✔", // Subject line
-    text: "Shitted pants, Hello world ✔", // plaintext body
-    html: "<b>Hello world ✔</b>" // html body
-};
+    // create reusable transporter object using the default SMTP transport
+    let transporter = nodemailer.createTransport({
+        host: 'smtp.ethereal.email',
+        port: 587,
+        secure: false, // true for 465, false for other ports
+        auth: {
+            user: account.user, // generated ethereal user
+            pass: account.pass  // generated ethereal password
+        }
+    });
 
-transporter.sendMail(mailOptions, (error, info) => {
+    // setup email data with unicode symbols
+    let mailOptions = {
+        from: '"Fred Foo 👻" <foo@blurdybloop.com>', // sender address
+        to: 'bar@blurdybloop.com, baz@blurdybloop.com', // list of receivers
+        subject: 'Hello ✔', // Subject line
+        text: 'Hello world?', // plain text body
+        html: '<b>Hello world?</b>' // html body
+    };
+
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
             return console.log(error);
         }
