@@ -4,24 +4,36 @@
  *  the most obvious difference being the different file you need to include:
  */
 #include "ESP8266WiFi.h"
+bool flag = false;  //Was scan done?
 
 void setup() {
+  //Sets up serial and rate
   Serial.begin(115200);
-
+  
+  pinMode(LED_BUILTIN, OUTPUT);
+  
   // Set WiFi to station mode and disconnect from an AP if it was previously connected
   WiFi.mode(WIFI_STA);
   WiFi.disconnect();
   delay(100);
-
+  
   Serial.println("Setup done");
 }
 
 void loop() {
+//  if (flag == 1) {
+//    return;  
+//  }
+
+  digitalWrite(LED_BUILTIN, HIGH);
+  
   Serial.println("scan start");
 
   // WiFi.scanNetworks will return the number of networks found
   int n = WiFi.scanNetworks();
   Serial.println("scan done");
+//  flag = true; //Scan was done
+  digitalWrite(LED_BUILTIN, LOW);
   if (n == 0)
     Serial.println("no networks found");
   else
