@@ -16,9 +16,8 @@ nodemailer.createTestAccount((err, account) => {
 
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
-//        host: 'smtp.gmail.email',
-//        port: 587,
-        service: "Gmail",
+        host: 'smtp.gmail.com',
+        port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
             user: "michaelthomaspardi@gmail.com", // generated ethereal user
