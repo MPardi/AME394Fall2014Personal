@@ -1,31 +1,44 @@
 <!doctype html>
 <html>
-<head>
-<script src="asyncReq.js"> </script>
-<script>
-  var x = function(){
-    loadFile("./getData", function(data){
-      var obj = JSON.parse(data);
-      document.getElementById("results").innerHTML = 
-        "<b>LIGHT:</b> " + obj.light +
-        "<br> <b>TEMP:</b> " + obj.temp +
-        "<br> <b>HUMIDITY:</b> " + obj.humidity; 
-    });
-  }
-function start()
-{
-  x();
-  setInterval("x()", 500);
-}
 
-</script>
+<head>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="asyncReq.js">
+
+
+    </script>
+    <script>
+        var x = function() {
+            loadFile("./getData", function(data) {
+                var obj = JSON.parse(data);
+                document.getElementById("results").innerHTML =
+                    "<b>LIGHT:</b> " + obj.light +
+                    "<br> <b>TEMP:</b> " + obj.temp +
+                    "<br> <b>HUMIDITY:</b> " + obj.humidity;
+            });
+        }
+
+        function start() {
+            x();
+            setInterval("x()", 500);
+        }
+
+    </script>
 
 </head>
 
 <body onload='start()'>
-<h1> TEST </h1>
+    <h1> TEST </h1>
 
-<div id='results' style="align: center;"> </div>
+    <div class="content">
+        <div class="row">
+            <div class="col-sm-1">
+                <div id='results'> </div>
+            </div>
+        </div>
+    </div>
+
 
 </body>
+
 </html>
