@@ -11,16 +11,18 @@
         var x = function() {
             loadFile("./getData", function(data) {
                 var obj = JSON.parse(data);
-                document.getElementById("results").innerHTML =
-                    "<b>LIGHT:</b> " + obj.light +
-                    "<br> <b>TEMP:</b> " + obj.temp +
+                document.getElementById("light").innerHTML =
+                    "<b>LIGHT:</b> " + obj.light;
+                document.getElementById("temp").innerHTML =
+                    "<br> <b>TEMP:</b> " + obj.temp;
+                document.getElementById("humidity").innerHTML =
                     "<br> <b>HUMIDITY:</b> " + obj.humidity;
             });
         }
 
         function start() {
             x();
-            setInterval("x()", 500);
+            setInterval("x()", 1000);
         }
 
     </script>
@@ -29,15 +31,19 @@
 
 <body onload='start()'>
     <h1> TEST </h1>
-
-    <div class="content">
+    <div id='results'>
         <div class="row">
-            <div class="col-sm-1">
-                <div id='results'> </div>
+            <div class="col-sm-4">
+                <div id="light"></div>
+            </div>
+            <div class="col-sm-4">
+                <div id="temp"></div>
+            </div>
+            <div class="col-sm-4">
+                <div id="humidity"></div>
             </div>
         </div>
     </div>
-
 
 </body>
 
