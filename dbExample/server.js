@@ -42,13 +42,11 @@ app.get("/get", function (req, res) {
 
 
 app.get("/getData", function (req, res) {
-  var rObj = {
-    "light": light || "NA",
-    "temp": temp || "NA",
-    "humidity": humidity || "NA"
-  };
-  console.log(rObj);
-  res.send(JSON.stringify(rObj));
+    db.collection('data').find().sort({time:-1}).toArray(function(err, result) {
+    rObj = result[0];
+    console.log(rObj);
+    res.send(JSON.stringify(rObj));
+    });
 });
 
 app.use(methodOverride());
