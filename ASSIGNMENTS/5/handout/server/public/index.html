@@ -22,36 +22,37 @@
                         "<br> <b>HUMIDITY:</b> " + obj.humidity;
                     runCount++;
                 } else {
+                    document.getElementById("results").innerHTML = "";
                     if (oldLight > obj.light) {
-                        document.getElementById("results").innerHTML =
+                        document.getElementById("results").innerHTML +=
                             "<b>LIGHT</b><br>" + obj.light + " (-" + (oldLight - obj.light) + ")<br>";
                     } else if (oldLight < obj.light) {
-                        document.getElementById("results").innerHTML =
+                        document.getElementById("results").innerHTML +=
                             "<b>LIGHT</b><br>" + obj.light + " (+" + (obj.light - oldLight) + ")<br>";
                     } else {
-                        document.getElementById("results").innerHTML =
+                        document.getElementById("results").innerHTML +=
                             "<b>LIGHT</b><br>" + obj.light + " (--)<br>";
                     }
                     
                     if (oldTemp > obj.temp) {
-                        document.getElementById("results").innerHTML =
+                        document.getElementById("results").innerHTML +=
                             "<b>TEMP</b><br>" + obj.temp + "F (-" + (oldTemp - obj.temp) + ")<br>";
                     } else if (oldTemp < obj.temp) {
-                        document.getElementById("results").innerHTML =
+                        document.getElementById("results").innerHTML +=
                             "<b>TEMP</b><br>" + obj.light + "F (+" + (obj.temp - oldTemp) + ")<br>";
                     } else {
-                        document.getElementById("results").innerHTML =
+                        document.getElementById("results").innerHTML +=
                             "<b>TEMP</b><br>" + obj.temp + "F (--)<br>";
                     }
                     
                     if (oldHumin > obj.humidity) {
-                        document.getElementById("results").innerHTML =
+                        document.getElementById("results").innerHTML +=
                             "<b>HUMIDITY</b><br>" + obj.humidity + "% (-" + (oldHumin - obj.humidity) + ")<br>";
                     } else if (oldLight < obj.light) {
-                        document.getElementById("results").innerHTML =
+                        document.getElementById("results").innerHTML +=
                             "<b>HUMIDITY</b><br>" + obj.humidity + "% (+" + (obj.humidity - oldHumin) + ")<br>";
                     } else {
-                        document.getElementById("results").innerHTML =
+                        document.getElementById("results").innerHTML +=
                             "<b>HUMIDITY</b><br>" + obj.humidity + "% (--)<br>";
                     }
                 }
