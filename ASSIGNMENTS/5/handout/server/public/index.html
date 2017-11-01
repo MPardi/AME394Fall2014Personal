@@ -25,21 +25,21 @@
                     document.getElementById("results").innerHTML = "";
                     if (oldLight > obj.light) {
                         document.getElementById("results").innerHTML +=
-                            "<b>LIGHT</b><br>" + obj.light + " (-" + (oldLight - obj.light) + ")<br>";
+                            "<p style='color:green;'><b>LIGHT</b><br>" + obj.light + " (-" + (oldLight - obj.light) + ")<br></p>";
                     } else if (oldLight < obj.light) {
                         document.getElementById("results").innerHTML +=
-                            "<b>LIGHT</b><br>" + obj.light + " (+" + (obj.light - oldLight) + ")<br>";
+                            "<p style='color:red;'><b>LIGHT</b><br>" + obj.light + " (+" + (obj.light - oldLight) + ")<br></p>";
                     } else {
                         document.getElementById("results").innerHTML +=
-                            "<p style='color:red;'><b>LIGHT</b></p><br>" + obj.light + " (--)<br>";
+                            "<b>LIGHT</b><br>" + obj.light + " (--)<br>";
                     }
                     
                     if (oldTemp > obj.temp) {
                         document.getElementById("results").innerHTML +=
-                            "<b>TEMP</b><br>" + obj.temp + "F (-" + (oldTemp - obj.temp) + ")<br>";
+                            "<p style='color:green;'><b>TEMP</b><br>" + obj.temp + "F (-" + (oldTemp - obj.temp) + ")<br></p>";
                     } else if (oldTemp < obj.temp) {
                         document.getElementById("results").innerHTML +=
-                            "<b>TEMP</b><br>" + obj.light + "F (+" + (obj.temp - oldTemp) + ")<br>";
+                            "<p style='color:red;'><b>TEMP</b><br>" + obj.light + "F (+" + (obj.temp - oldTemp) + ")<br></p>";
                     } else {
                         document.getElementById("results").innerHTML +=
                             "<b>TEMP</b><br>" + obj.temp + "F (--)<br>";
@@ -47,10 +47,10 @@
                     
                     if (oldHumin > obj.humidity) {
                         document.getElementById("results").innerHTML +=
-                            "<b>HUMIDITY</b><br>" + obj.humidity + "% (-" + (oldHumin - obj.humidity) + ")<br>";
+                            "<p style='color:green;'><b>HUMIDITY</b><br>" + obj.humidity + "% (-" + (oldHumin - obj.humidity) + ")<br></p>";
                     } else if (oldLight < obj.light) {
                         document.getElementById("results").innerHTML +=
-                            "<b>HUMIDITY</b><br>" + obj.humidity + "% (+" + (obj.humidity - oldHumin) + ")<br>";
+                            "<p style='color:red;'><b>HUMIDITY</b><br>" + obj.humidity + "% (+" + (obj.humidity - oldHumin) + ")<br></p>";
                     } else {
                         document.getElementById("results").innerHTML +=
                             "<b>HUMIDITY</b><br>" + obj.humidity + "% (--)<br>";
