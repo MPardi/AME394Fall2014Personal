@@ -2,7 +2,9 @@
 <html>
 
 <head>
-    <script src="asyncReq.js"><
+    <script src="asyncReq.js">
+        <
+
     </script>
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
     <script>
@@ -15,10 +17,10 @@
             loadFile("./getData", function(data) {
                 var obj = JSON.parse(data);
                 if (runCount == 0) {
-                    document.getElementById("results").innerHTML =
-                        "<h2><b>LIGHT:</b></h2><p>" + obj.light + "</p>" +
-                        "<h2><b>TEMP:</b></h2><p>" + obj.temp + "F" + "</p>" +
-                        "<h2><b>HUMIDITY:</b></h2><p>" + obj.humidity + "%</p>";
+                    document.getElementById("results").innerHTML +=
+                        "<h2><b>LIGHT</b></h2><p>" + obj.light + "% (--)<br></p>" +
+                        "<h2><b>TEMP</b></h2><p>" + obj.temp + "F (--)<br><p>" + 
+                        "<h2><b>HUMIDITY</b></h2><p>" + obj.humidity + "% (--)<br></p>";
                     runCount++;
                 } else {
                     document.getElementById("results").innerHTML = "";
@@ -32,7 +34,7 @@
                         document.getElementById("results").innerHTML +=
                             "<h2><b>LIGHT</b></h2><p>" + obj.light + "% (--)<br></p>";
                     }
-                    
+
                     if (oldTemp > obj.temp) {
                         document.getElementById("results").innerHTML +=
                             "<h2><b>TEMP</b></h2><p style='color:green;'>" + obj.temp + "F (-" + (oldTemp - obj.temp) + ")<br></p>";
@@ -43,7 +45,7 @@
                         document.getElementById("results").innerHTML +=
                             "<h2><b>TEMP</b></h2><p>" + obj.temp + "F (--)<br><p>";
                     }
-                    
+
                     if (oldHumin > obj.humidity) {
                         document.getElementById("results").innerHTML +=
                             "<h2><b>HUMIDITY</b></h2><p style='color:green;'>" + obj.humidity + "% (-" + (oldHumin - obj.humidity) + ")<br></p>";
@@ -69,11 +71,12 @@
         }
 
     </script>
-    
+
     <style>
         body {
             font-family: 'Poppins', sans-serif;
         }
+
     </style>
 
 </head>
