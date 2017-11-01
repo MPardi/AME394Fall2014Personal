@@ -7,6 +7,11 @@
 
     </script>
     <script>
+        var oldTemp;
+        var oldHumin;
+        var oldLight;
+        var runCount;
+
         var x = function() {
             loadFile("./getData", function(data) {
                 var obj = JSON.parse(data);
@@ -20,12 +25,10 @@
                     if (oldLight > obj.light) {
                         document.getElementById("results").innerHTML =
                             "<b>LIGHT</b><br>" + obj.light + "F (-" + oldLight - obj.light + ")";
-                    }
-                    else if (oldLight < obj.light) {
+                    } else if (oldLight < obj.light) {
                         document.getElementById("results").innerHTML =
                             "<b>LIGHT</b><br>" + obj.light + "F (+" + obj.light - oldLight + ")";
-                    }
-                    else {
+                    } else {
                         document.getElementById("results").innerHTML =
                             "<b>LIGHT</b><br>" + obj.light + "F (--)";
                     }
@@ -38,10 +41,7 @@
         }
 
         function start() {
-            var oldTemp;
-            var oldHumin;
-            var oldLight;
-            var runCount = 0;
+            runCount = 0;
             x();
             setInterval("x()", 1000);
         }
