@@ -2,10 +2,9 @@
 <html>
 
 <head>
-    <script src="asyncReq.js">
-
-
+    <script src="asyncReq.js"><
     </script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <script>
         var oldTemp;
         var oldHumin;
@@ -25,13 +24,13 @@
                     document.getElementById("results").innerHTML = "";
                     if (oldLight > obj.light) {
                         document.getElementById("results").innerHTML +=
-                            "<h2><b>LIGHT</b></h2><p style='color:green;'>" + obj.light + " (-" + (oldLight - obj.light) + ")<br></p>";
+                            "<h2><b>LIGHT</b></h2><p style='color:green;'>" + obj.light + "% (-" + (oldLight - obj.light) + ")<br></p>";
                     } else if (oldLight < obj.light) {
                         document.getElementById("results").innerHTML +=
-                            "<h2><b>LIGHT</b></h2><p style='color:red;'>" + obj.light + " (+" + (obj.light - oldLight) + ")<br></p>";
+                            "<h2><b>LIGHT</b></h2><p style='color:red;'>" + obj.light + "% (+" + (obj.light - oldLight) + ")<br></p>";
                     } else {
                         document.getElementById("results").innerHTML +=
-                            "<h2><b>LIGHT</b></h2><p>" + obj.light + " (--)<br></p>";
+                            "<h2><b>LIGHT</b></h2><p>" + obj.light + "% (--)<br></p>";
                     }
                     
                     if (oldTemp > obj.temp) {
@@ -42,7 +41,7 @@
                             "<h2><b>TEMP</b></h2><p style='color:green;'>" + obj.light + "F (+" + (obj.temp - oldTemp) + ")<br></p>";
                     } else {
                         document.getElementById("results").innerHTML +=
-                            "<h2><b>TEMP</b></h2><p style='color:green;'>" + obj.temp + "F (--)<br><p>";
+                            "<h2><b>TEMP</b></h2><p>" + obj.temp + "F (--)<br><p>";
                     }
                     
                     if (oldHumin > obj.humidity) {
@@ -53,7 +52,7 @@
                             "<h2><b>HUMIDITY</b></h2><p style='color:green;'>" + obj.humidity + "% (+" + (obj.humidity - oldHumin) + ")<br></p>";
                     } else {
                         document.getElementById("results").innerHTML +=
-                            "<h2><b>HUMIDITY</b></h2><p style='color:green;'>" + obj.humidity + "% (--)<br></p>";
+                            "<h2><b>HUMIDITY</b></h2><p>" + obj.humidity + "% (--)<br></p>";
                     }
                 }
 
@@ -70,6 +69,12 @@
         }
 
     </script>
+    
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
 
 </head>
 
