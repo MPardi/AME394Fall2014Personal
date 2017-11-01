@@ -17,43 +17,43 @@
                 var obj = JSON.parse(data);
                 if (runCount == 0) {
                     document.getElementById("results").innerHTML =
-                        "<p><b>LIGHT:</b><br> " + obj.light + "</p>" +
-                        "<p><b>TEMP:</b><br> " + obj.temp + "F" + "</p>" +
-                        "<p><b>HUMIDITY:</b><br> " + obj.humidity + "%</p>";
+                        "<h2><b>LIGHT:</b></h2><p>" + obj.light + "</p>" +
+                        "<h2><b>TEMP:</b></h2><p>" + obj.temp + "F" + "</p>" +
+                        "<h2><b>HUMIDITY:</b></h2><p>" + obj.humidity + "%</p>";
                     runCount++;
                 } else {
                     document.getElementById("results").innerHTML = "";
                     if (oldLight > obj.light) {
                         document.getElementById("results").innerHTML +=
-                            "<p style='color:green;'><b>LIGHT</b><br>" + obj.light + " (-" + (oldLight - obj.light) + ")<br></p>";
+                            "<h2><b>LIGHT</b></h2><p style='color:green;'>" + obj.light + " (-" + (oldLight - obj.light) + ")<br></p>";
                     } else if (oldLight < obj.light) {
                         document.getElementById("results").innerHTML +=
-                            "<p style='color:red;'><b>LIGHT</b><br>" + obj.light + " (+" + (obj.light - oldLight) + ")<br></p>";
+                            "<h2><b>LIGHT</b></h2><p style='color:red;'>" + obj.light + " (+" + (obj.light - oldLight) + ")<br></p>";
                     } else {
                         document.getElementById("results").innerHTML +=
-                            "<b>LIGHT</b><br>" + obj.light + " (--)<br></p>";
+                            "<h2><b>LIGHT</b></h2><p>" + obj.light + " (--)<br></p>";
                     }
                     
                     if (oldTemp > obj.temp) {
                         document.getElementById("results").innerHTML +=
-                            "<p style='color:green;'><b>TEMP</b><br>" + obj.temp + "F (-" + (oldTemp - obj.temp) + ")<br></p>";
+                            "<h2><b>TEMP</b></h2><p style='color:green;'>" + obj.temp + "F (-" + (oldTemp - obj.temp) + ")<br></p>";
                     } else if (oldTemp < obj.temp) {
                         document.getElementById("results").innerHTML +=
-                            "<p style='color:red;'><b>TEMP</b><br>" + obj.light + "F (+" + (obj.temp - oldTemp) + ")<br></p>";
+                            "<h2><b>TEMP</b></h2><p style='color:green;'>" + obj.light + "F (+" + (obj.temp - oldTemp) + ")<br></p>";
                     } else {
                         document.getElementById("results").innerHTML +=
-                            "<p><b>TEMP</b><br>" + obj.temp + "F (--)<br><p>";
+                            "<h2><b>TEMP</b></h2><p style='color:green;'>" + obj.temp + "F (--)<br><p>";
                     }
                     
                     if (oldHumin > obj.humidity) {
                         document.getElementById("results").innerHTML +=
-                            "<p style='color:green;'><b>HUMIDITY</b><br>" + obj.humidity + "% (-" + (oldHumin - obj.humidity) + ")<br></p>";
+                            "<h2><b>HUMIDITY</b></h2><p style='color:green;'>" + obj.humidity + "% (-" + (oldHumin - obj.humidity) + ")<br></p>";
                     } else if (oldLight < obj.light) {
                         document.getElementById("results").innerHTML +=
-                            "<p style='color:red;'><b>HUMIDITY</b><br>" + obj.humidity + "% (+" + (obj.humidity - oldHumin) + ")<br></p>";
+                            "<h2><b>HUMIDITY</b></h2><p style='color:green;'>" + obj.humidity + "% (+" + (obj.humidity - oldHumin) + ")<br></p>";
                     } else {
                         document.getElementById("results").innerHTML +=
-                            "<p><b>HUMIDITY</b><br>" + obj.humidity + "% (--)<br></p>";
+                            "<h2><b>HUMIDITY</b></h2><p style='color:green;'>" + obj.humidity + "% (--)<br></p>";
                     }
                 }
 
