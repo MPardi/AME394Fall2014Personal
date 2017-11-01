@@ -37,10 +37,10 @@
 
                     if (oldTemp > obj.temp) {
                         document.getElementById("results").innerHTML +=
-                            "<h2><b>TEMP</b></h2><p style='color:green;'>" + obj.temp + "F (-" + (oldTemp - obj.temp).toFixed(2) + ")<br></p>";
+                            "<h2><b>TEMP</b></h2><p style='color:green;'>" + obj.temp + "F (-" + (oldTemp - obj.temp).toFixed(1) + ")<br></p>";
                     } else if (oldTemp < obj.temp) {
                         document.getElementById("results").innerHTML +=
-                            "<h2><b>TEMP</b></h2><p style='color:green;'>" + obj.light + "F (+" + (obj.temp - oldTemp).toFixed(2) + ")<br></p>";
+                            "<h2><b>TEMP</b></h2><p style='color:green;'>" + obj.light + "F (+" + (obj.temp - oldTemp).toFixed(1) + ")<br></p>";
                     } else {
                         document.getElementById("results").innerHTML +=
                             "<h2><b>TEMP</b></h2><p>" + obj.temp + "F (--)<br><p>";
