@@ -7,10 +7,13 @@
 
     </script>
     <script>
-        var oldTemp;
-        var oldHumin;
-        var oldLight;
-        var runCount = 0;
+        var s = function() {
+            var oldTemp;
+            var oldHumin;
+            var oldLight;
+            var runCount = 0;
+        }
+        
         var x = function() {
             loadFile("./getData", function(data) {
                 var obj = JSON.parse(data);
@@ -42,6 +45,7 @@
         }
 
         function start() {
+            s();
             x();
             setInterval("x()", 1000);
         }
