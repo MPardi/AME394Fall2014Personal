@@ -17,9 +17,9 @@
                 var obj = JSON.parse(data);
                 if (runCount == 0) {
                     document.getElementById("results").innerHTML =
-                        "<b>LIGHT:</b> " + obj.light +
-                        "<br> <b>TEMP:</b> " + obj.temp +
-                        "<br> <b>HUMIDITY:</b> " + obj.humidity;
+                        "<b>LIGHT:</b><br> " + obj.light +
+                        "<br> <b>TEMP:</b><br> " + obj.temp +
+                        "<br> <b>HUMIDITY:</b><br> " + obj.humidity;
                     runCount++;
                 } else {
                     document.getElementById("results").innerHTML = "";
