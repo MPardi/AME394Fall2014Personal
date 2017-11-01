@@ -1,31 +1,60 @@
 <!doctype html>
 <html>
-<head>
-<script src="asyncReq.js"> </script>
-<script>
-  var x = function(){
-    loadFile("./getData", function(data){
-      var obj = JSON.parse(data);
-      document.getElementById("results").innerHTML = 
-        "<b>LIGHT:</b> " + obj.light +
-        "<br> <b>TEMP:</b> " + obj.temp +
-        "<br> <b>HUMIDITY:</b> " + obj.humidity; 
-    });
-  }
-function start()
-{
-  x();
-  setInterval("x()", 1000);
-}
 
-</script>
+<head>
+    <script src="asyncReq.js">
+
+
+    </script>
+    <script>
+        var oldTemp;
+        var oldHumin;
+        var oldLight;
+        var runCount = 0;
+        var x = function() {
+            loadFile("./getData", function(data) {
+                var obj = JSON.parse(data);
+                if (runCount == 0) {
+                    document.getElementById("results").innerHTML =
+                        "<b>LIGHT:</b> " + obj.light +
+                        "<br> <b>TEMP:</b> " + obj.temp +
+                        "<br> <b>HUMIDITY:</b> " + obj.humidity;
+                    runCount++;
+                } else {
+                    if (oldLight > obj.light) {
+                        document.getElementById("results").innerHTML =
+                            "<b>LIGHT</b><br>" + obj.light + "F (-" + oldLight - obj.light + ")";
+                    }
+                    else if (oldLight < obj.light) {
+                        document.getElementById("results").innerHTML =
+                            "<b>LIGHT</b><br>" + obj.light + "F (+" + obj.light - oldLight + ")";
+                    }
+                    else {
+                        document.getElementById("results").innerHTML =
+                            "<b>LIGHT</b><br>" + obj.light + "F (--)";
+                    }
+                }
+
+                oldTemp = obj.temp;
+                oldHumin = obj.humidity;
+                oldLight = obj.light;
+            });
+        }
+
+        function start() {
+            x();
+            setInterval("x()", 1000);
+        }
+
+    </script>
 
 </head>
 
 <body onload='start()'>
-<h1> TEST </h1>
+    <h1> TEST </h1>
 
-<div id='results'> </div>
+    <div id='results'> </div>
 
 </body>
+
 </html>
