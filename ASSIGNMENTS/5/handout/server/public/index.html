@@ -24,10 +24,10 @@
                 } else {
                     if (oldLight > obj.light) {
                         document.getElementById("results").innerHTML =
-                            "<b>LIGHT</b><br>" + obj.light + " (-" + oldLight - obj.light + ")";
+                            "<b>LIGHT</b><br>" + obj.light + " (-" + (oldLight - obj.light) + ")";
                     } else if (oldLight < obj.light) {
                         document.getElementById("results").innerHTML =
-                            "<b>LIGHT</b><br>" + obj.light + " (+" + obj.light - oldLight + ")";
+                            "<b>LIGHT</b><br>" + obj.light + " (+" + (obj.light - oldLight) + ")";
                     } else {
                         document.getElementById("results").innerHTML =
                             "<b>LIGHT</b><br>" + obj.light + " (--)";
