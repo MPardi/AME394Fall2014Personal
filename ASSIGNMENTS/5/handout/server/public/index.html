@@ -17,9 +17,9 @@
                 var obj = JSON.parse(data);
                 if (runCount == 0) {
                     document.getElementById("results").innerHTML =
-                        "<b>LIGHT:</b><br> " + obj.light +
-                        "<br> <b>TEMP:</b><br> " + obj.temp + "F" +
-                        "<br> <b>HUMIDITY:</b><br> " + obj.humidity + "%";
+                        "<p><b>LIGHT:</b><br> " + obj.light + "</p>" +
+                        "<p><br> <b>TEMP:</b><br> " + obj.temp + "F" + "</p>" +
+                        "<br> <b>HUMIDITY:</b><br> " + obj.humidity + "%</p>";
                     runCount++;
                 } else {
                     document.getElementById("results").innerHTML = "";
@@ -31,7 +31,7 @@
                             "<p style='color:red;'><b>LIGHT</b><br>" + obj.light + " (+" + (obj.light - oldLight) + ")<br></p>";
                     } else {
                         document.getElementById("results").innerHTML +=
-                            "<b>LIGHT</b><br>" + obj.light + " (--)<br>";
+                            "<b>LIGHT</b><br>" + obj.light + " (--)<br></p>";
                     }
                     
                     if (oldTemp > obj.temp) {
@@ -42,7 +42,7 @@
                             "<p style='color:red;'><b>TEMP</b><br>" + obj.light + "F (+" + (obj.temp - oldTemp) + ")<br></p>";
                     } else {
                         document.getElementById("results").innerHTML +=
-                            "<b>TEMP</b><br>" + obj.temp + "F (--)<br>";
+                            "<p><b>TEMP</b><br>" + obj.temp + "F (--)<br><p>";
                     }
                     
                     if (oldHumin > obj.humidity) {
@@ -53,7 +53,7 @@
                             "<p style='color:red;'><b>HUMIDITY</b><br>" + obj.humidity + "% (+" + (obj.humidity - oldHumin) + ")<br></p>";
                     } else {
                         document.getElementById("results").innerHTML +=
-                            "<b>HUMIDITY</b><br>" + obj.humidity + "% (--)<br>";
+                            "<p><b>HUMIDITY</b><br>" + obj.humidity + "% (--)<br></p>";
                     }
                 }
 
