@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+
+<head>
+    <script src="asyncReq.js">
+
+
+    </script>
+    <script>
+        function format2(n) {
+            return n > 9 ? "" + n : "0" + n;
+        }
+
+        function getDateInFormat(dObj) {
+            document.getElementById("dateInput").value = dObj.getFullYear() + "-" + format2(dObj.getMonth()) + "-" + format2(dObj.getDate());
+        }
+
+        function getTimeInFormat(dObj) {
+            document.getElementById("timeInput").value = format2(dObj.getHours()) + ":" + format2(dObj.getMinutes());
+        }
+
+        var buildGraph = function() {
+            var to = new Date(document.getElementById("dateInput").value + " " + document.getElementById("timeInput").value).getTime();
+            var from = to - parseInt(document.getElementById("timeSelect").value) * 60 * 1000
+            loadFile("./getDataInRange?to=" + to + "&from=" + from, function(data) {
+                var obj = JSON.parse(data);
+                console.log(obj);
+            });
+        }
+
+        function start() {
+            getDateInFormat(new Date());
+            getTimeInFormat(new Date());
+        }
+
+    </script>
+
+</head>
+
+<body onload='start()'>
+    <h1>Sensor Date</h1>
+
+    <input type="date" id='dateInput'>
+    <input type="time" id='timeInput'>
+
+    <select id='timeSelect'>
+        <option value="5">last 5 min</option>
+        <option value="10">last 10 min</option>
+        <option value="5">last 30 min</option>
+        <option value="10">last 1 hour</option>
+        <option value="5">last 2 hour</option>
+        <option value="10">last 10 hour</option>
+</select>
+
+    <div id='results'> </div>
+
+</body>
+
+</html>

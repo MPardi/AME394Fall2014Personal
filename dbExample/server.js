@@ -10,25 +10,40 @@ var port = 8080;
 var MS = require('mongoskin');
 var db = MS.db('mongodb://ame:394@127.0.0.1:27017/ame394');
 
-db.collection('data').find({a:2}).toArray(function(err, result) {
-    console.log(result);
-});
-
 var light;
 var temp;
 var humidity;
 
 app.get("/update", function (req, res) {
     console.log("GET req arrived")
-    var info = (req.query);
+    var info = req.query;
     info.time = new Date().getTime();
+
     db.collection('data').insert(info, function(err, result) {
-    console.log(result);
+      console.log(result);
     });
-    light = req.query.light || light;
-    temp = req.query.temp || temp;
-    humidity = req.query.humidity || humidity;
-        res.send("1")
+
+    res.send("1")
+});
+
+app.get("/getDataLatest", function (req, res) {
+  db.collection('data').find().sort({time:-1}).toArray(function(err, result){
+    rObj = result[0];
+    console.log(rObj);
+    res.send(JSON.stringify(rObj));
+  });
+});
+
+
+app.get("/getDataInRange", function (req, res) {
+  var info = req.query;
+  var fromDate = parseInt(info.from);
+  var toDate = parseInt(info.to);
+
+  db.collection('data').find({time:{$gte: fromDate, $lte:toDate}}).sort({time:-1}).toArray(function(err, result){
+    console.log(result);
+    res.send(JSON.stringify(result));
+  });
 });
 
 
@@ -40,14 +55,6 @@ app.get("/get", function (req, res) {
     res.send(outS);
 });
 
-
-app.get("/getData", function (req, res) {
-    db.collection('data').find().sort({time:-1}).toArray(function(err, result) {
-    rObj = result[0];
-    console.log(rObj);
-    res.send(JSON.stringify(rObj));
-    });
-});
 
 app.use(methodOverride());
 app.use(bodyParser());
