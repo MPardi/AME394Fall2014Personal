@@ -11,12 +11,8 @@
             return n > 9 ? "" + n : "0" + n;
         }
 
-        function valuesChanged() {
-            buildGraph();
-        }
-
         function getDateInFormat(dObj) {
-            document.getElementById("dateInput").value = dObj.getFullYear() + "-" + format2(dObj.getMonth()) + "-" + format2(dObj.getDate())
+            document.getElementById("dateInput").value = dObj.getFullYear() + "-" + format2(dObj.getMonth()) + "-" + format2(dObj.getDate());
         }
 
         function getTimeInFormat(dObj) {
@@ -25,8 +21,7 @@
 
         var buildGraph = function() {
             var to = new Date(document.getElementById("dateInput").value + " " + document.getElementById("timeInput").value).getTime();
-            var from = to - (parseInt(document.getElementById("timeSelect").value) * 60 * 1000);
-
+            var from = to - parseInt(document.getElementById("timeSelect").value) * 60 * 1000
             loadFile("./getDataInRange?to=" + to + "&from=" + from, function(data) {
                 var obj = JSON.parse(data);
                 console.log(obj);
@@ -36,7 +31,6 @@
         function start() {
             getDateInFormat(new Date());
             getTimeInFormat(new Date());
-            buildGraph();
         }
 
     </script>
@@ -44,17 +38,18 @@
 </head>
 
 <body onload='start()'>
-    <h1> Sensor Data </h1>
+    <h1>Sensor Date</h1>
 
-    <input onChange="valuesChanged()" type='date' id='dateInput'>
-    <input onChange="valuesChanged()" type='time' id='timeInput'>
+    <input type="date" id='dateInput'>
+    <input type="time" id='timeInput'>
 
-    <select onChange="valuesChanged()" id='timeSelect'>
-  <option value='5'> last 5 min </option>
-  <option value='10'> last 10 min </option>
-  <option value='15'> last 15 min </option>
-  <option value='30'> last 30 min </option>
-  <option value='60'> last 1 hour </option>
+    <select id='timeSelect'>
+        <option value="5">last 5 min</option>
+        <option value="10">last 10 min</option>
+        <option value="5">last 30 min</option>
+        <option value="10">last 1 hour</option>
+        <option value="5">last 2 hour</option>
+        <option value="10">last 10 hour</option>
 </select>
 
     <div id='results'> </div>
