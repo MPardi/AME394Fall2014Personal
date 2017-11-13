@@ -8,7 +8,7 @@ var port = 8080;
 
 
 var MS = require('mongoskin');
-var db = MS.db('mongodb://ame:394@127.0.0.1:27017/ame394');
+var db = MS.db('mongodb://user:pwd@127.0.0.1:27017/ame394');
 
 var light;
 var temp;
@@ -45,15 +45,6 @@ app.get("/getDataInRange", function (req, res) {
     console.log(result);
     res.send(JSON.stringify(result));
   });
-});
-
-
-app.get("/get", function (req, res) {
-  var outS = "";
-    outS +=  "Light: " + light + "<br>";
-    outS +=  "Temperature: " + temp + "<br>";
-    outS +=  "Humidity: " + humidity;
-    res.send(outS);
 });
 
 
