@@ -69,6 +69,7 @@
         function start() {
             getDateInFormat(new Date());
             getTimeInFormat(new Date());
+            $('#dateInput').datetimepicker();
             buildGraph();
         }
 
@@ -80,7 +81,7 @@
     <h1> Sensor Data </h1>
 
     <input onchange='valuesChanged()' type='date' id='dateInput'>
-    <input onchange='valuesChanged()' type='time' id='timeInput'>
+    <input onchange='valuesChanged()' type='time' id='  timeInput'>
 
     <select onchange='valuesChanged()' id='timeSelect'>
   <option value='5'> last 5 min </option>
