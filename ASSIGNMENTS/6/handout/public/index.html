@@ -68,8 +68,9 @@
             getDateInFormat(new Date());
             getTimeInFormat(new Date());
             $('#dateInput').datetimepicker({
+                timeFormat: 'hh:mm tt'
+                dateFormat: 'dd M yy',
                 altField: "#timeInput"
-                altTimeFormat: "h:m t",
             });
             
             buildGraph();
