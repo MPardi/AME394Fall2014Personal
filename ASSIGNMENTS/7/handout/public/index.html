@@ -71,7 +71,7 @@
 
             //            buildGraph();
             var to = new Date().getTime();
-            var from = to - 5 * 60 * 1000;
+            var from = to - 1 * 60 * 1000;
             var url = "./getDataInRange?to=" + to + "&from=" + from
 
             loadFile(url, function(data) {
@@ -87,8 +87,11 @@
                         cols[1].push(obj[i].humidity);
                         cols[2].push(obj[i].temp);
                     }
+                    var prevTemp = obj[i - 1].temp;
                     var currentTemp = obj[i].temp;
-                    var curremtLight = obj[i].light;
+                    var prevLight = obj[i].light;
+                    var currentLight = obj[i].light;
+                    var prevHumidity = obj[i].humidity;
                     var currentHumidity = obj[i].humidity;
                 };
 
@@ -101,9 +104,9 @@
 
                 chart.flow({
                     columns: [
-                        ['Light', curremtLight, 200],
-                        ['Humidity', currentHumidity, 150],
-                        ['Temperature', currentTemp, 400]
+                        ['Light', prevLight, currentLight],
+                        ['Humidity', prevHumidity, currentHumidity],
+                        ['Temperature', prevTemp, currentTemp]
                     ],
                     duration: 1500
                 });
