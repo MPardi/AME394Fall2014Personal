@@ -87,13 +87,15 @@
                         cols[1].push(obj[i].humidity);
                         cols[2].push(obj[i].temp);
                     }
+                    /*
                     var prevTemp = obj[i - 1].temp;
                     var currentTemp = obj[i].temp;
                     var prevLight = obj[i].light;
                     var currentLight = obj[i].light;
                     var prevHumidity = obj[i].humidity;
                     var currentHumidity = obj[i].humidity;
-                };
+                    */
+                }
 
                 //                chart.flow({
                 //                    bindto: '#results',
@@ -108,7 +110,7 @@
                         ['Humidity', prevHumidity, currentHumidity],
                         ['Temperature', prevTemp, currentTemp]
                     ],
-                    duration: 1500
+                    duration: 500
                 });
             });
         }
