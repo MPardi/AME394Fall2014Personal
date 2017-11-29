@@ -68,17 +68,32 @@
         }
 
         function updateGraph() {
-            /* edit this function to make the graph update live */
-            chart.flow({
-                columns: [
-                    ['Light', 500, 200],
-                    ['Humidity', 100, 150],
-                    ['Temperature', 200, 400]
-                ],
-                duration: 1500
+            var to = new Date().getTime();
+            var from = to - 1 * 60 * 1000;
+            var url = "./getDataInRange?to=" + to + "&from=" + from
+
+            loadFile(url, function(data) {
+                var obj = JSON.parse(data);
+                var cols = [
+                    ["Light"],
+                    ["Humidity"],
+                    ["Temperature"]
+                ];
+                for (var i = 0; i < obj.length; i++) {
+                    if (obj[i].light && obj[i].temp && obj[i].humidity) {
+                        cols[0].push(obj[i].light);
+                        cols[1].push(obj[i].humidity);
+                        cols[2].push(obj[i].temp);
+                    }
+                };
+
+                chart.flow({
+                    bindto: '#results',
+                    data: {
+                        columns: cols
+                    }
+                });
             });
-            
-            buildGraph();
         }
 
     </script>

@@ -3,8 +3,8 @@
 
 #define DHTTYPE DHT11
 
-const char* ssid = "ESP8266Haven";
-//const char* ssid = "Tejaswi";
+//const char* ssid = "ESP8266Haven";
+const char* ssid = "Tejaswi";
 const char* password = "12345678";
 
 const char* host = "52.34.69.96";
