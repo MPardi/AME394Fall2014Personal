@@ -105,11 +105,7 @@
                 //                });
 
                 chart.flow({
-                    columns: [
-                        ['Light', prevLight, currentLight],
-                        ['Humidity', prevHumidity, currentHumidity],
-                        ['Temperature', prevTemp, currentTemp]
-                    ],
+                    columns: cols,
                     duration: 500
                 });
             });
