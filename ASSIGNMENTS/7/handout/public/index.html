@@ -68,8 +68,8 @@
         }
 
         function updateGraph() {
-            
-            buildGraph();
+
+            //            buildGraph();
             var to = new Date().getTime();
             var from = to - 5 * 60 * 1000;
             var url = "./getDataInRange?to=" + to + "&from=" + from
@@ -89,11 +89,20 @@
                     }
                 };
 
+                //                chart.flow({
+                //                    bindto: '#results',
+                //                    data: {
+                //                        columns: cols
+                //                    }
+                //                });
+
                 chart.flow({
-                    bindto: '#results',
-                    data: {
-                        columns: cols
-                    }
+                    columns: [
+                        ['Light', 500, 200],
+                        ['Humidity', 100, 150],
+                        ['Temperature', 200, 400]
+                    ],
+                    duration: 1500
                 });
             });
         }
