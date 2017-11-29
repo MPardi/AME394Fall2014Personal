@@ -67,6 +67,8 @@
             setInterval("updateGraph()", 1000);
         }
 
+        var lastDate = 0;
+
         function updateGraph() {
 
             //            buildGraph();
@@ -82,10 +84,12 @@
                     ["Temperature"]
                 ];
                 for (var i = 0; i < obj.length; i++) {
-                    if (obj[i].light && obj[i].temp && obj[i].humidity) {
-                        cols[0].push(obj[i].light);
-                        cols[1].push(obj[i].humidity);
-                        cols[2].push(obj[i].temp);
+                    if (lastDate > obj[i].time) {
+                        if (obj[i].light && obj[i].temp && obj[i].humidity) {
+                            cols[0].push(obj[i].light);
+                            cols[1].push(obj[i].humidity);
+                            cols[2].push(obj[i].temp);
+                        }
                     }
                     /*
                     var prevTemp = obj[i - 1].temp;
@@ -96,6 +100,7 @@
                     var currentHumidity = obj[i].humidity;
                     */
                 }
+                lastDate = obj[obj.length - 1].time;
 
                 //                chart.flow({
                 //                    bindto: '#results',
@@ -106,7 +111,7 @@
 
                 chart.flow({
                     columns: cols,
-                    duration: 500
+                    duration: 1500
                 });
             });
         }
