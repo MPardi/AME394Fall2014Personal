@@ -69,7 +69,7 @@
 
         function updateGraph() {
             var to = new Date().getTime();
-            var from = to - 0 * 60 * 1000;
+            var from = to - 5 * 60 * 1000;
             var url = "./getDataInRange?to=" + to + "&from=" + from
 
             loadFile(url, function(data) {
