@@ -87,6 +87,9 @@
                         cols[1].push(obj[i].humidity);
                         cols[2].push(obj[i].temp);
                     }
+                    var currentTemp = obj[i].temp;
+                    var curremtLight = obj[i].light;
+                    var currentHumidity = obj[i].humidity;
                 };
 
                 //                chart.flow({
@@ -98,9 +101,9 @@
 
                 chart.flow({
                     columns: [
-                        ['Light', 500, 200],
-                        ['Humidity', 100, 150],
-                        ['Temperature', 200, 400]
+                        ['Light', curremtLight, 200],
+                        ['Humidity', currentHumidity, 150],
+                        ['Temperature', currentTemp, 400]
                     ],
                     duration: 1500
                 });
