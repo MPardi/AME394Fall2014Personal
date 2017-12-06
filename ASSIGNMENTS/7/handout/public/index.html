@@ -27,6 +27,13 @@
         }
 
         var chart;
+        
+        chart = c3.generate({
+                    bindto: '#results',
+                    data: {
+                        columns: cols
+                    }
+                });
 
         var buildGraph = function() {
             var to = new Date().getTime();
