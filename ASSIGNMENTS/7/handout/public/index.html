@@ -27,11 +27,11 @@
         }
 
         var chart;
+        var lastDate = new Date().getTime() - 5 * 60 * 1000;
 
         var buildGraph = function() {
             var to = new Date().getTime();
-            var from = to - 5 * 60 * 1000;
-            var url = "./getDataInRange?to=" + to + "&from=" + from
+            var url = "./getDataInRange?to=" + to + "&from=" + lastDate;
 
             loadFile(url, function(data) {
                 var obj = JSON.parse(data);
@@ -41,7 +41,7 @@
                     ["Temperature"]
                 ];
                 for (var i = 0; i < obj.length; i++) {
-                    if (obj[i].light && obj[i].temp && obj[i].humidity) {
+                    if (obj[i].light && obj[i].temp && obj[i].humidity && obj[i].time > lastDate) {
                         cols[0].push(obj[i].light);
                         cols[1].push(obj[i].humidity);
                         cols[2].push(obj[i].temp);
@@ -55,7 +55,6 @@
                     }
                 });
             });
-
         }
 
         function valuesChanged() {
@@ -67,15 +66,9 @@
             setInterval("updateGraph()", 1000);
         }
 
-        var lastDate = 0;
-
         function updateGraph() {
-
-            //            buildGraph();
-
             var to = new Date().getTime();
-            var from = to - 5 * 60 * 1000;
-            var url = "./getDataInRange?to=" + to + "&from=" + from
+            var url = "./getDataInRange?to=" + to + "&from=" + lastDate;
 
             loadFile(url, function(data) {
                 var obj = JSON.parse(data);
@@ -85,42 +78,21 @@
                     ["Temperature"]
                 ];
                 for (var i = 0; i < obj.length; i++) {
-                    if (lastDate > obj[i].time) {
-                        if (obj[i].light && obj[i].temp && obj[i].humidity) {
-                            cols[0].push(obj[i].light);
-                            cols[1].push(obj[i].humidity);
-                            cols[2].push(obj[i].temp);
-                        }
+                    if (obj[i].light && obj[i].temp && obj[i].humidity && parseInt(obj[i].time) > lastDate) {
+                        cols[0].push(obj[i].light);
+                        cols[1].push(obj[i].humidity);
+                        cols[2].push(obj[i].temp);
                     }
-                    /*
-                    var prevTemp = obj[i - 1].temp;
-                    var currentTemp = obj[i].temp;
-                    var prevLight = obj[i].light;
-                    var currentLight = obj[i].light;
-                    var prevHumidity = obj[i].humidity;
-                    var currentHumidity = obj[i].humidity;
-                    */
+                    if (parseInt(obj[i].time) > lastDate) {
+                        lastDate = parseInt(obj[i].time);
+                    }
                 }
 
-                chart = c3.generate({
-                    bindto: '#results',
-                    data: {
-                        columns: cols
-                    }
-                });
 
-                //lastDate = obj[obj.length - 1].time;
-
-                //                chart.flow({
-                //                    bindto: '#results',
-                //                    data: {
-                //                        columns: cols
-                //                    }
-                //                });
 
                 chart.flow({
                     columns: cols,
-                    duration: 1500
+                    duration: 150
                 });
             });
         }
