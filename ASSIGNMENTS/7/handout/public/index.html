@@ -27,13 +27,6 @@
         }
 
         var chart;
-        
-        chart = c3.generate({
-                    bindto: '#results',
-                    data: {
-                        columns: cols
-                    }
-                });
 
         var buildGraph = function() {
             var to = new Date().getTime();
@@ -79,6 +72,14 @@
         function updateGraph() {
 
             //            buildGraph();
+
+            chart = c3.generate({
+                bindto: '#results',
+                data: {
+                    columns: cols
+                }
+            });
+
             var to = new Date().getTime();
             var from = to - 5 * 60 * 1000;
             var url = "./getDataInRange?to=" + to + "&from=" + from
