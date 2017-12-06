@@ -73,13 +73,6 @@
 
             //            buildGraph();
 
-            chart = c3.generate({
-                bindto: '#results',
-                data: {
-                    columns: cols
-                }
-            });
-
             var to = new Date().getTime();
             var from = to - 5 * 60 * 1000;
             var url = "./getDataInRange?to=" + to + "&from=" + from
@@ -108,6 +101,14 @@
                     var currentHumidity = obj[i].humidity;
                     */
                 }
+
+                chart = c3.generate({
+                    bindto: '#results',
+                    data: {
+                        columns: cols
+                    }
+                });
+
                 lastDate = obj[obj.length - 1].time;
                 obj.
 
