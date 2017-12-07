@@ -66,10 +66,65 @@
             setInterval("updateGraph()", 1000);
         }
 
+<<<<<<< HEAD
+        var lastDate = 0;
+
+//        function updateGraph() {
+//
+//            //            buildGraph();
+//            var to = new Date().getTime();
+//            var from = to - 5 * 60 * 1000;
+//            var url = "./getDataInRange?to=" + to + "&from=" + from
+//
+//            loadFile(url, function(data) {
+//                var obj = JSON.parse(data);
+//                var cols = [
+//                    ["Light"],
+//                    ["Humidity"],
+//                    ["Temperature"]
+//                ];
+//                for (var i = 0; i < obj.length; i++) {
+//                    if (lastDate > obj[i].time) {
+//                        if (obj[i].light && obj[i].temp && obj[i].humidity) {
+//                            cols[0].push(obj[i].light);
+//                            cols[1].push(obj[i].humidity);
+//                            cols[2].push(obj[i].temp);
+//                        }
+//                    }
+//                    /*
+//                    var prevTemp = obj[i - 1].temp;
+//                    var currentTemp = obj[i].temp;
+//                    var prevLight = obj[i].light;
+//                    var currentLight = obj[i].light;
+//                    var prevHumidity = obj[i].humidity;
+//                    var currentHumidity = obj[i].humidity;
+//                    */
+//                }
+//                lastDate = obj[obj.length - 1].time;
+//
+//                //                chart.flow({
+//                //                    bindto: '#results',
+//                //                    data: {
+//                //                        columns: cols
+//                //                    }
+//                //                });
+//
+//                chart.flow({
+//                    columns: cols,
+//                    duration: 1500
+//                });
+//            });
+//        }
+
+        function updateGraph() {
+            var to = new Date().getTime();
+            var url = "./getDataInRange?to=" + to + "&from=" + lastDate;
+=======
         function updateGraph() {
             var to = new Date().getTime();
             var url = "./getDataInRange?to=" + to + "&from=" + lastDate;
 
+>>>>>>> eba9d713bdf9c013207f94056a7f4d00af0e0a88
             loadFile(url, function(data) {
                 var obj = JSON.parse(data);
                 var cols = [
@@ -78,6 +133,27 @@
                     ["Temperature"]
                 ];
                 for (var i = 0; i < obj.length; i++) {
+<<<<<<< HEAD
+                    if (parseInt(obj[i].time) > lastDate) {
+                        if (obj[i].light && obj[i].temp && obj[i].humidity && parseInt(obj[i].time) > lastDate) {
+                            cols[0].push(obj[i].light);
+                            cols[1].push(obj[i].humidity);
+                            cols[2].push(obj[i].temp);
+                            lastDate = parseInt(obj[i].time);
+                        }
+                        //                        if (parseInt(obj[i].time) > lastDate) {
+                        //                            lastDate = parseInt(obj[i].time);
+                        //                        }
+                    }
+                }
+
+                if (parseInt(obj[i].time) > lastDate) {
+                    chart.flow({
+                        columns: cols,
+                        duration: 150
+                    });
+                }
+=======
                     if (obj[i].light && obj[i].temp && obj[i].humidity && parseInt(obj[i].time) > lastDate) {
                         cols[0].push(obj[i].light);
                         cols[1].push(obj[i].humidity);
@@ -94,6 +170,7 @@
                     columns: cols,
                     duration: 150
                 });
+>>>>>>> eba9d713bdf9c013207f94056a7f4d00af0e0a88
             });
         }
 
