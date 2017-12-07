@@ -72,7 +72,7 @@
 
         function start() {
             buildGraph();
-            setInterval("updateGraph()", 250);
+            setInterval("updateGraph()", 1000);
         }
 
         function updateGraph() {
@@ -100,7 +100,7 @@
                 if (obj[length] !== undefined) {
                     chart.flow({
                         columns: cols,
-                        duration: 25
+                        duration: 150
                     });
                 }
             });
