@@ -66,7 +66,6 @@
             setInterval("updateGraph()", 1000);
         }
 
-<<<<<<< HEAD
         var lastDate = 0;
 
 //        function updateGraph() {
@@ -119,12 +118,10 @@
         function updateGraph() {
             var to = new Date().getTime();
             var url = "./getDataInRange?to=" + to + "&from=" + lastDate;
-=======
         function updateGraph() {
             var to = new Date().getTime();
             var url = "./getDataInRange?to=" + to + "&from=" + lastDate;
 
->>>>>>> eba9d713bdf9c013207f94056a7f4d00af0e0a88
             loadFile(url, function(data) {
                 var obj = JSON.parse(data);
                 var cols = [
@@ -133,7 +130,6 @@
                     ["Temperature"]
                 ];
                 for (var i = 0; i < obj.length; i++) {
-<<<<<<< HEAD
                     if (parseInt(obj[i].time) > lastDate) {
                         if (obj[i].light && obj[i].temp && obj[i].humidity && parseInt(obj[i].time) > lastDate) {
                             cols[0].push(obj[i].light);
@@ -153,7 +149,6 @@
                         duration: 150
                     });
                 }
-=======
                     if (obj[i].light && obj[i].temp && obj[i].humidity && parseInt(obj[i].time) > lastDate) {
                         cols[0].push(obj[i].light);
                         cols[1].push(obj[i].humidity);
@@ -170,7 +165,6 @@
                     columns: cols,
                     duration: 150
                 });
->>>>>>> eba9d713bdf9c013207f94056a7f4d00af0e0a88
             });
         }
 
