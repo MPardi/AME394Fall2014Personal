@@ -135,10 +135,14 @@
                         lastDate = parseInt(obj[i].time);
                     }
                 }
-                chart.flow({
-                    columns: cols,
-                    duration: 150
-                });
+
+                if (obj[length - 1] != null) 
+                {
+                    chart.flow({
+                        columns: cols,
+                        duration: 150
+                    });
+                }
             });
         }
 
