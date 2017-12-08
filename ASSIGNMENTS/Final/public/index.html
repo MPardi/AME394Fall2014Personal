@@ -100,14 +100,20 @@
 
                 }
 
-                if (obj[length] !== undefined) {
-                    if (obj[length].time !== lastDate) {
-                        chart.flow({
+                if (cols !== undefined) {
+                    chart.flow({
                             columns: cols,
                             duration: 0
                         });
-                    }
                 }
+//                if (obj[length] !== undefined) {
+//                    if (obj[length].time !== lastDate) {
+//                        chart.flow({
+//                            columns: cols,
+//                            duration: 0
+//                        });
+//                    }
+//                }
             });
         }
 
