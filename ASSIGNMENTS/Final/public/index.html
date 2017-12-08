@@ -101,10 +101,12 @@
                 }
 
                 if (obj[length] !== undefined) {
-                    chart.flow({
-                        columns: cols,
-                        duration: 0
-                    });
+                    if (obj[length].time !== lastDate) {
+                        chart.flow({
+                            columns: cols,
+                            duration: 0
+                        });
+                    }
                 }
             });
         }
