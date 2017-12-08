@@ -92,9 +92,9 @@
                         cols[1].push(obj[i].humidity);
                         cols[2].push(obj[i].temp);
                     }
-                    
+
                     lastDate = parseInt(obj[length].time);
-                        
+
                 }
 
                 if (obj[length] !== undefined) {
@@ -113,6 +113,10 @@
 <body onload='start()'>
     <h1> Sensor Data (live) </h1>
 
+    <button onclick='showHistory()' style='position:fixed; bottom:2px;right:2px;font-size: 30px;'>
+	History
+</button>
+
     <!--
 <input onchange='valuesChanged()' type='text' id='dateInput'>
 <input onchange='valuesChanged()' type='text' id='timeInput'>
@@ -129,10 +133,6 @@
 -->
 
     <div id='results'> </div>
-
-    <button onclick='showHistory()' style='position:fixed; bottom:2px;right:2px;font-size: 30px;'>
-	History
-</button>
 
 </body>
 
