@@ -87,7 +87,7 @@
                     ["Temperature"]
                 ];
                 for (var i = 0; i < obj.length; i++) {
-                    if (obj[i], light !== undefined && obj[i].temp !== undefined && obj[i].humidity !== undefined && parseInt(obj[i].time) > lastDate) {
+                    if (obj[i].light !== undefined && obj[i].temp !== undefined && obj[i].humidity !== undefined && parseInt(obj[i].time) > lastDate) {
                         cols[0].push(obj[i].light);
                         cols[1].push(obj[i].humidity);
                         cols[2].push(obj[i].temp);
