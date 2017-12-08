@@ -36,7 +36,8 @@
         }
 
         var chart;
-        var lastDate = new Date().getTime() - 100 * 1000 * 60;
+        var lastDate = new Date();
+        lastDate.setSeconds(lastDate.getSeconds - 1);
 
         var buildGraph = function() {
             var to = new Date().getTime();
