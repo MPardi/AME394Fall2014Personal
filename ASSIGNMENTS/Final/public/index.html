@@ -87,12 +87,12 @@
                     ["Temperature"]
                 ];
                 for (var i = 0; i < obj.length; i++) {
-                    if (obj[i].light && obj[i].temp && obj[i].humidity && parseInt(obj[i].time) > lastDate) {
+                    if (obj[i].light && obj[i].temp && obj[i].humidity && parseInt(obj[i].time) > parseInt(lastDate)) {
                         cols[0].push(obj[i].light);
                         cols[1].push(obj[i].humidity);
                         cols[2].push(obj[i].temp);
                     }
-                    if (parseInt(obj[i].time) > lastDate) {
+                    if (parseInt(obj[i].time) > parseInt(lastDate)) {
                         lastDate = parseInt(obj[length].time);
                     }
 
