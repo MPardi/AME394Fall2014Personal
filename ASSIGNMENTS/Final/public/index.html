@@ -92,28 +92,28 @@
                         cols[1].push(obj[i].humidity);
                         cols[2].push(obj[i].temp);
                     }
-                    //                    if (parseInt(obj[i].time) > lastDate) {
-                    //                        lastDate = parseInt(obj[length].time);
-                    //                    }
+                    if (parseInt(obj[i].time) > lastDate) {
+                        lastDate = parseInt(obj[length].time);
+                    }
 
-                    lastDate = parseInt(obj[length].time);
+                    //                    lastDate = parseInt(obj[length].time);
 
                 }
 
                 if (cols !== undefined) {
                     chart.flow({
-                            columns: cols,
-                            duration: 0
-                        });
+                        columns: cols,
+                        duration: 0
+                    });
                 }
-//                if (obj[length] !== undefined) {
-//                    if (obj[length].time !== lastDate) {
-//                        chart.flow({
-//                            columns: cols,
-//                            duration: 0
-//                        });
-//                    }
-//                }
+                //                if (obj[length] !== undefined) {
+                //                    if (obj[length].time !== lastDate) {
+                //                        chart.flow({
+                //                            columns: cols,
+                //                            duration: 0
+                //                        });
+                //                    }
+                //                }
             });
         }
 
