@@ -111,13 +111,14 @@
 </head>
 
 <body onload='start()'>
-    <h1> Sensor Data (live) </h1>
+    <div class="container">
+        <h1> Sensor Data (live) </h1>
 
-    <button onclick='showHistory()' style='position:fixed; bottom:2px;right:2px;font-size: 30px;'>
+        <button onclick='showHistory()' style='position:fixed; bottom:2px;right:2px;font-size: 30px;'>
 	History
 </button>
 
-    <!--
+        <!--
 <input onchange='valuesChanged()' type='text' id='dateInput'>
 <input onchange='valuesChanged()' type='text' id='timeInput'>
 
@@ -131,8 +132,9 @@
 
 <button onclick='buildGraph()'> Refresh </button>
 -->
-    <div>
-        <div id='results'> </div>
+        <div>
+            <div id='results'> </div>
+        </div>
     </div>
 </body>
 
