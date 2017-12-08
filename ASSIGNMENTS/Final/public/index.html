@@ -87,19 +87,15 @@
                     ["Temperature"]
                 ];
                 for (var i = 0; i < obj.length; i++) {
-                    if (obj[i].light !== undefined && obj[i].temp !== undefined && obj[i].humidity !== undefined && parseInt(obj[i].time) > lastDate) {
+                    if (obj[i].light && obj[i].temp && obj[i].humidity && parseInt(obj[i].time) > lastDate) {
                         cols[0].push(obj[i].light);
                         cols[1].push(obj[i].humidity);
                         cols[2].push(obj[i].temp);
                     }
-//                    if (obj[i].light && obj[i].temp && obj[i].humidity && parseInt(obj[i].time) > lastDate) {
-//                        cols[0].push(obj[i].light);
-//                        cols[1].push(obj[i].humidity);
-//                        cols[2].push(obj[i].temp);
-//                    }
-//                    if (parseInt(obj[i].time) > lastDate) {
-//                        lastDate = parseInt(obj[length].time);
-//                    }
+                    //                    if (parseInt(obj[i].time) > lastDate) {
+                    //                        lastDate = parseInt(obj[length].time);
+                    //                    }
+
                     lastDate = parseInt(obj[length].time);
 
                 }
@@ -107,7 +103,7 @@
                 if (obj[length] !== undefined) {
                     chart.flow({
                         columns: cols,
-                        duration: 0
+                        duration: 150
                     });
                 }
             });
