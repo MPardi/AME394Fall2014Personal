@@ -36,8 +36,7 @@
         }
 
         var chart;
-        var lastDate = new Date();
-        lastDate.setSeconds(lastDate.getSeconds - 1);
+        var lastDate = new Date().getTime() - 1 * 60 * 1000;
 
         var buildGraph = function() {
             var to = new Date().getTime();
@@ -93,11 +92,11 @@
                         cols[1].push(obj[i].humidity);
                         cols[2].push(obj[i].temp);
                     }
-                    if (parseInt(obj[i].time) > lastDate) {
-                        lastDate = parseInt(obj[length].time);
-                    }
+                    //                    if (parseInt(obj[i].time) > lastDate) {
+                    //                        lastDate = parseInt(obj[length].time);
+                    //                    }
 
-//                    lastDate = parseInt(obj[length].time);
+                    lastDate = parseInt(obj[length].time);
 
                 }
 
